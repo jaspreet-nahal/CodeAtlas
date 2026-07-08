@@ -1,0 +1,27 @@
+# Render deployment configuration for CodeAtlas Backend
+# Deploy from the `backend/` directory
+# https://render.com/docs/deploy-fastapi
+
+services:
+  - type: web
+    name: codeatlas-api
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ALLOWED_ORIGINS
+        # Replace with your actual Vercel frontend URL after deployment
+        # Example: https://codeatlas-frontend.vercel.app
+        value: "*"
+      - key: HF_TOKEN
+        # Optional: Add your Hugging Face token for embeddings if needed
+        # Generate at: https://huggingface.co/settings/tokens
+        sync: false
+      - key: SKIP_EMBEDDING
+        value: "true"
+    healthCheckPath: /api/health
+    autoDeploy: true

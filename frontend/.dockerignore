@@ -1,0 +1,20 @@
+# Frontend Docker Ignore
+node_modules
+dist
+build
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+.DS_Store
+.git
+.gitignore
+README.md
+Dockerfile
+docker-compose.yml
+nginx.conf
+*.md
+.vite
+coverage
+.eslintcache

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.schemas import AnalyzeGithubRequest, AnalyzeGithubResponse, HealthResponse
@@ -11,10 +13,18 @@ from app.services.repo_loader import cleanup_repository, clone_repository
 
 app = FastAPI(title="CodeAtlas API", version="0.1.0")
 
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "*").strip()
+allowed_origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+if not allowed_origins:
+    allowed_origins = ["*"]
+
+# Browsers disallow credentialed CORS with wildcard origins.
+allow_credentials = allowed_origins != ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=allowed_origins,
+    allow_credentials=allow_credentials,
     allow_methods=["*"],
     allow_headers=["*"],
 )
