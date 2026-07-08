@@ -7,9 +7,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "regions": ["iad1"],
-  "env": {
-    "VITE_API_BASE_URL": "@codeatlas-api-url"
-  },
   "headers": [
     {
       "source": "/assets/(.*)",
