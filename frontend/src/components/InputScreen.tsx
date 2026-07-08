@@ -58,8 +58,12 @@ export function InputScreen({ atlas }: InputScreenProps) {
           transition={{ duration: 0.45 }}
           className="flex items-center gap-3 mb-12"
         >
-          <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/25 ring-1 ring-orange-400/30">
-            <span className="text-white font-black text-sm">C</span>
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg shadow-orange-500/25 ring-1 ring-orange-400/30 overflow-hidden">
+            <img
+              src="/icons.svg"
+              alt="CodeAtlas Logo"
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="text-slate-900 font-semibold text-base tracking-tight">CodeAtlas</span>
         </motion.div>
