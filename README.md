@@ -1,3 +1,8 @@
+
+
+https://github.com/user-attachments/assets/affe90b8-1e73-4cb6-b187-ef6958658d40
+
+
 # CodeAtlas
 
 CodeAtlas is an interactive codebase analysis and visualization project that extracts structure and semantics from repositories, builds dependency/semantic graphs, and exposes AI-powered endpoints for exploring and explaining code.
